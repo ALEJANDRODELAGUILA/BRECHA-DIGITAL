@@ -1,0 +1,58 @@
+USO DE ITNERNET SEGUN GENERO
+
+```{r}
+library(rio)
+lk='https://github.com/ALEJANDRODELAGUILA/BRECHA-DIGITAL/raw/main/USO%20DE%20INTERNET.xlsx'
+internet=import(lk)
+```
+
+```{r}
+internet[,c(2:5)]=NULL
+```
+
+```{r}
+internet[,c(3)]=NULL
+```
+
+```{r}
+internet[,c(4:5)]=NULL
+```
+
+```{r}
+names(internet)=c("Country","Male","Female")
+```
+
+```{r}
+internet$Country=gsub("Economy Name",NA,internet$Country)
+internet$Male=gsub("Male",NA,internet$Male)
+internet$Male=gsub("Gender",NA,internet$Male)
+internet$Female=gsub("Female",NA,internet$Female)
+
+```
+
+```{r}
+internet=na.omit(internet)
+```
+
+```{r}
+internet[,c(2:3)]=replace(internet[,c(2:3)],internet[,c(2:3)]=="...",NA)
+```
+
+```{r}
+internet=na.omit(internet)
+```
+
+```{r}
+str(internet)
+```
+
+```{r}
+internet[,c(2:3)]=lapply(internet[,c(2:3)],as.numeric)
+```
+solo falta ponerle nuevos nombres antes de guardarla como tal
+```{r}
+write.csv(DIGITAL,"USO DE INTERNET.csv",row.names = F)
+```
+
+write.csv(DIGITAL,"Brecha digital genero.csv",row.names = F)
+

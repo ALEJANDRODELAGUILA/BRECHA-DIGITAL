@@ -1,0 +1,38 @@
+
+*usamos la variable brecha digital ya que en los últimos años  se han incrementado las campañas políticas a través del uso de internet, además de que es una herramienta a través de la cual accedemos a cualquier información . Lo que inferimos con esta data es que en aquellos paises donde la brecha digital es menor, las mujeres tienen mas posibilidades de postular a cargos públicos y ser elegidas.*
+
+```{r}
+library(rio)
+lk='https://github.com/ALEJANDRODELAGUILA/BRECHA-DIGITAL/raw/main/BRECHA%20DIGITAL.xlsx'
+
+DIGITAL= import(lk)
+
+```
+
+```{r}
+str(DIGITAL)
+```
+
+```{r}
+DIGITAL$Male=as.numeric(DIGITAL$Male)
+DIGITAL$Female=as.numeric(DIGITAL$Female)
+```
+
+```{r}
+str(DIGITAL)
+```
+
+
+
+
+
+```{r}
+write.csv(DIGITAL,"BRECHA DIGITAL.csv",row.names = F)
+```
+
+write.csv(datos, "nombre que le quieres poner.csv")
+
+
+
+
+
